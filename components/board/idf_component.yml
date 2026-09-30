@@ -1,0 +1,14 @@
+dependencies:
+  # Waveshare ESP32-P4 DEV-KIT: the parts of the board's BSP the emulator uses, without LVGL
+  waveshare/esp_lcd_ili9881c:
+    version: "^2.0.0"
+    rules:
+      - if: "$CONFIG{TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT} == True"
+  espressif/esp_codec_dev:
+    version: "~1.5"
+    rules:
+      - if: "$CONFIG{TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT} == True"
+  cherry-embedded/cherryusb:
+    version: "^1.6.1"
+    rules:
+      - if: "$CONFIG{TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT} == True"

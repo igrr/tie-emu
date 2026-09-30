@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "waveshare_esp32p4_devkit",
+            "displayName": "Waveshare ESP32-P4 DEV-KIT",
+            "binaryDir": "build/waveshare_esp32p4_devkit",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "IDF_TARGET": "esp32p4",
+                "SDKCONFIG": "${sourceDir}/build/waveshare_esp32p4_devkit/sdkconfig",
+                "SDKCONFIG_DEFAULTS": "${sourceDir}/sdkconfig.defaults;${sourceDir}/components/board/waveshare_esp32p4_devkit/sdkconfig.defaults"
+            }
+        }
+    ],
+    "buildPresets": [
+        { "name": "waveshare_esp32p4_devkit", "configurePreset": "waveshare_esp32p4_devkit" }
+    ]
+}

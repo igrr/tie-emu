@@ -1,0 +1,9 @@
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+.venv/
+__pycache__/
+
+# The game's files (tools/sdcard.py writes them here)
+/sdcard/

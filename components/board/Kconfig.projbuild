@@ -1,0 +1,39 @@
+menu "TIE Fighter emulator"
+
+    choice TIE_BOARD
+        prompt "Board"
+        default TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT
+        help
+            The board the emulator runs on: its display, audio output, SD card and USB input
+            (components/board). The chip, flash and PSRAM settings of the board are in
+            components/board/<board>/sdkconfig.defaults, which the board's preset in
+            CMakePresets.json passes to the build.
+
+        config TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT
+            bool "Waveshare ESP32-P4 DEV-KIT with the 7-DSI-TOUCH-A panel"
+            depends on IDF_TARGET_ESP32P4
+    endchoice
+
+    config TIE_VOLUME
+        int "Speaker volume (0-100)"
+        range 0 100
+        default 70
+
+    choice TIE_SD_SPEED
+        prompt "SD card bus speed"
+        depends on TIE_BOARD_WAVESHARE_ESP32P4_DEVKIT
+        default TIE_SD_SPEED_SDR50
+        help
+            The UHS-I modes switch the card and the pads (on-chip LDO 4) to 1.8 V: they need a
+            UHS-I card. A card without UHS-I support stays at its default speed.
+
+        config TIE_SD_SPEED_HS
+            bool "High speed (50 MHz, 3.3 V)"
+        config TIE_SD_SPEED_SDR50
+            bool "UHS-I SDR50 (100 MHz)"
+        config TIE_SD_SPEED_DDR50
+            bool "UHS-I DDR50 (50 MHz, both edges)"
+        config TIE_SD_SPEED_SDR104
+            bool "UHS-I SDR104 (200 MHz, chip revision 3.0 and later)"
+    endchoice
+endmenu
